@@ -1,1 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Bryan ❤️ Thathiana</title>
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: #ffe6ee;
+      text-align:center;
+      color:#333;
+    }
+    .card{
+      background:white;
+      max-width:600px;
+      margin:50px auto;
+      padding:30px;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,.1);
+    }
+    h1{ color:#ff4d6d; }
+    button{
+      background:#ff4d6d;
+      color:white;
+      border:none;
+      padding:12px 20px;
+      border-radius:25px;
+      cursor:pointer;
+      font-size:16px;
+    }
+    button:hover{ opacity:.8; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Bryan ❤️ Thathiana</h1>
+    <p>Nuestra historia en Arequipa, Perú</p>
+
+    <h3>Días juntos:</h3>
+    <p id="dias"></p>
+
+    <button onclick="editar()">Editar fecha</button>
+  </div>
+
+  <script>
+    let inicio = localStorage.getItem("inicio") || "2022-09-15";
+
+    function calcular(){
+      let hoy = new Date();
+      let fecha = new Date(inicio);
+      let diff = hoy - fecha;
+      let dias = Math.floor(diff / (1000*60*60*24));
+      document.getElementById("dias").innerText = dias + " días ❤️";
+    }
+
+    function editar(){
+      let nueva = prompt("Ingresa la fecha (YYYY-MM-DD)", inicio);
+      if(nueva){
+        inicio = nueva;
+        localStorage.setItem("inicio", inicio);
+        calcular();
+      }
+    }
+
+    calcular();
+  </script>
+
+</body>
+</html>
+
 
